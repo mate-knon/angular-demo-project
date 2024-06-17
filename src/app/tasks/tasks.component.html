@@ -1,1 +1,16 @@
-<h1>{{ name() }}</h1>
+<section id="tasks">
+  @if(isModalActive) {<app-new-task [userId]="userId" (close)="onCloseAddTask()"></app-new-task>}
+  <header>
+    <h1>{{ name() }}'s Tasks</h1>
+    <menu>
+      <button (click)="onStartAddTask()">Add task</button>
+    </menu>
+  </header>
+  <ul>
+    @for (task of selectedUserTasks; track task.id) {
+    <li>
+      <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+    </li>
+    }
+  </ul>
+</section>
