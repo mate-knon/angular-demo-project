@@ -1,5 +1,9 @@
 <section id="tasks">
-  @if(isModalActive) {<app-new-task [userId]="userId" (close)="onCloseAddTask()"></app-new-task>}
+  @if(isModalActive) {<app-new-task
+    [userId]="userId"
+    (close)="onCloseAddTask()"
+  ></app-new-task
+  >}
   <header>
     <h1>{{ name() }}'s Tasks</h1>
     <menu>
@@ -9,7 +13,7 @@
   <ul>
     @for (task of selectedUserTasks; track task.id) {
     <li>
-      <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+      <app-task [task]="task"></app-task>
     </li>
     }
   </ul>
